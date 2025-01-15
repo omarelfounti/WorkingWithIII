@@ -14,13 +14,22 @@ const server = http.createServer((req, res) => {
     let ruta = "./visualizacion/";
     switch (req.url) {
         case "/":
-            ruta += "index.html";  
+            ruta += "index.html";
+            res.statusCode = 200;  
             break;
         case "/about":
-            ruta += "about.html";  
+            ruta += "about.html";
+            res.statusCode = 200;  
+            break;
+        case "/about-us":
+            ruta += "about.html";
+            res.statusCode = 301;
+            res.setHeader("Location", "/about");
+            res.end();  
             break;
         default:
             ruta += "404.html";
+            res.statusCode = 200;  
             break;
     }
 
